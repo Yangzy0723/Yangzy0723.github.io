@@ -1,0 +1,30 @@
+---
+layout: mypost
+title: 有趣的网站
+categories: [杂项]
+---
+1.  [asciinema](https://asciinema.org/)
+    **Record and share your terminal sessions, the simple way.**
+    Forget screen recording apps and blurry video. Experience a lightweight, text-based approach to terminal recording.
+
+2. [plantuml](https://www.plantuml.com)
+    PlantUML 是一个开源工具，可以通过简单的文本描述来生成各种 UML 图形。用户只需使用一种类似于代码的语法来描述 UML 图，然后通过 PlantUML 工具即可生成相应的图形。PlantUML 支持众多 UML 图形，包括类图、时序图、用例图、活动图等等。
+
+3. [compiler explorer](https://godbolt.org/)
+    Godbolt是一个在线的代码编译和查看工具，旨在帮助程序员更好地理解编译器是如何处理他们的代码的。用户可以在 Godbolt上输入他们的代码，并查看不同编译器（如 GCC、Clang、MSVC 等）在不同编译选项下生成的汇编代码。这有助于程序员了解编译器的优化规则、代码生成方式，以及不同编译器之间的差异。
+
+4. [chatgpt](https://chatgptdemo.info/chat/)
+    免费的chatgpt使用平台。
+
+5. [第1PPT](https://www.1ppt.com/)
+    免费下载海量PPT模板。
+
+6. [zlibrary](https://zlibrary-sg.se/)
+    可使用的zlibrary镜像。
+
+7. [aosabook](https://aosabook.org/en/)
+    **The Architecture of Open Source Applications**
+    If you are a junior developer, and want to learn how your more experienced colleagues think, these books are the place to start. 
+
+8. [alda](https://alda.io/)
+    Alda is a text-based programming language for music composition. It allows you to write and play back music using only a text editor and the command line.
