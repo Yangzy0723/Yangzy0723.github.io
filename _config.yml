@@ -32,8 +32,8 @@ menu:
     url: /pages/categories.html
   - title: 搜索
     url: /pages/search.html
-#  - title: 友链
-#    url: /pages/links.html
+  - title: 友链
+    url: /pages/links.html
 #  - title: 留言
 #    url: /pages/chat.html
   - title: 关于
@@ -54,7 +54,7 @@ extCount: true
 
 # 在myblog/pages/links.md中被使用
 # 友情链接
-# links:
+links:
 #  - title: 文科中的技术宅
 #    url: https://www.townwang.com
 #  - title: Auuu Nya Blog

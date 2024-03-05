@@ -1,10 +1,10 @@
 ---
 layout: mypost
-title: 《LimSim:A Long-term Interactive Multi-scenario Traffic Simulator》
+title: 《LimSim： A Long-term Interactive Multi-scenario Traffic Simulator》
 categories: [论文阅读]
 ---
 ## LimSim: A Long-term Interactive Multi-scenario Traffic Simulator
-**[源代码](github.com/PJLab-ADG/LimSim)**
+**[源代码](http://github.com/PJLab-ADG/LimSim)**
 **[原文](LimSim_A_Long-Term_Interactive_Multi-Scenario_Traffic_Simulator.pdf)**
 
 ### INTRODUCTION
