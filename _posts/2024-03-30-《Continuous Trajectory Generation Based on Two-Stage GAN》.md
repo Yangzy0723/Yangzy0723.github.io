@@ -59,7 +59,7 @@ $\hat{T}=\max\prod\limits_{i=1}^n\pi(a_i|s_i)=\max\limits_{P_\Theta}\prod\limits
 
 **判别器$D$：** 生成**奖励$R$** 以引导生成器的优化过程
 
-![生成器和判别器](G_and_P.png)
+![生成器和判别器](G_and_D.png)
 
 根据前文定义*Human Movement Policy*，为考虑当前部分轨迹和旅行目的地的影响，采用`A*`来建模人类移动策略$\pi(a|s)$
 
