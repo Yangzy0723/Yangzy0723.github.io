@@ -104,7 +104,7 @@ $$f(l_j)=-\log\pi(a\ given\ s)=-\log P(l_j\ given\ x_{1:i}\cap l_d)$$
 
     $$N^{(z+1)}=GAT(N^z, A)$$
 
-    $N^z\in R^{|L|\times d_s}$，是道路矩阵迭代$z$次的结果，$l_i-th$行$n_{l_i}\in R^{d_s}$与道路段$l_i\in L$相对应，$A$是路网的邻接矩阵
+    $N^z\in R^{\|L\|\times d_s}$，是道路矩阵迭代$z$次的结果，$l_i-th$行$n_{l_i}\in R^{d_s}$与道路段$l_i\in L$相对应，$A$是路网的邻接矩阵
 
 2. 在获得$N^z$后，使用多层感知网络来预测从候选道路$l_j$到目的地$l_d$的预期条件概率，表示为：
 
