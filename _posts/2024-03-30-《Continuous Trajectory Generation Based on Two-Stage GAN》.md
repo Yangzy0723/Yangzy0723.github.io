@@ -7,7 +7,7 @@ categories: [论文阅读]
 
 **[原文](trojectory+generator.pdf)**
 
-## Abstract
+## 一、Abstract
 
 本文提出了一个新颖的两阶段生成对抗框架来生成道路网络上的连续轨迹，即`TS-TrajGen`，它有效地将人类移动领域知识与无模型学习范式相结合。
 
@@ -16,7 +16,7 @@ categories: [论文阅读]
 
 最后，我们提出了一个新颖的两阶段生成过程，以克服现有随机生成过程的弱点。
 
-## Introduction
+## 二、Introduction
 
 生成合成且逼真的轨迹的重要性：
 1. 合成轨迹对于城市规划、疫情传播分析和交通控制至关重要
@@ -36,7 +36,7 @@ categories: [论文阅读]
 
 首次通过将A*算法与神经网络相结合来解决城市道路网络上的连续轨迹生成问题。
 
-## Preliminary
+## 三、Preliminary
 
 **轨迹定义：** 一个时间顺序序列$T=\{x_1,x_2,...,x_n\}$，其中$x_i$是一个元组$(l_i,t_i)$，$l_i$指示位置（道路段ID），$x_i$指示时间戳
 
@@ -52,7 +52,7 @@ $$\pi(a\ given\ s)=P(a\ given\ s)=P(l_{i+1}\ given\ x_{1:i}\cap l_d)$$
 **生成过程可以描述为将以下生成轨迹的概率最大化：**
 $$\hat{T}=\max\prod\limits_{i=1}^n\pi(a_i\ given\ s_i)=\max\limits_{P_\Theta}\prod\limits_{i=1}^nP_\Theta(l_{i+1}\ given\ x_{1:i}\cap l_d)$$
 
-## The Proposed Framework
+## 四、The Proposed Framework
 
 **生成器$G$：** 学习人类移动策略 $\pi(a\ given\ s)$
 
@@ -72,7 +72,7 @@ $$f(l_j)=-\log\pi(a\ given\ s)=-\log P(l_j\ given\ x_{1:i}\cap l_d)$$
 
 因此，在本文中使用神经网络来实现$g$和$h$
 
-### Function $g$
+### 4.1 Function $g$
 
 结合LSTM网络和自注意机制，对当前的观察成本进行建模，学习当前的运动状态。
 - LSTM是长短期记忆（Long Short-Term Memory）的缩写，是一种常用于处理序列数据的深度学习模型。LSTM是循环神经网络（RNN）的一种变体，旨在解决传统RNN在处理长序列数据时出现的梯度消失或梯度爆炸的问题。通过引入称为“门控单元”的结构，LSTM可以更有效地捕捉长期依赖关系，从而更好地处理时间序列数据、自然语言处理等任务。LSTM的主要特点包括遗忘门、输入门和输出门，这些门控制信息的流动，有助于模型记忆长期依赖关系并避免梯度消失问题。
@@ -93,3 +93,5 @@ $$f(l_j)=-\log\pi(a\ given\ s)=-\log P(l_j\ given\ x_{1:i}\cap l_d)$$
     $$P(l_j\ given\ x_{1:i})=\frac{exp(\omega_{l_j}\cdot \widetilde{h_i}\cdot adj_{l_i,l_j})}{\sum_{l_k}exp(\omega_{l_k}\cdot \widetilde{h_i}\cdot adj_{l_i,l_k})}$$
 
 观测成本$g(l_j)=-\log P(l_j\ given\ x_{1:i})$
+
+### 4.2 Function $f$
