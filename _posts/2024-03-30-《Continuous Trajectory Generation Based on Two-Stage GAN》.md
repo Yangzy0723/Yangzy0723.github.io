@@ -47,10 +47,10 @@ categories: [论文阅读]
 事实上，这是一个马尔可夫决策过程（MDP），记现有状态$s$由$x_{1:i}$组成，给定目标道路段$l_d$，下一步道路段选择为$l_{i+1}$（行动记为$a$），那么运动策略实际上建模为 $\pi(a|s)$
 
 **Human Movement Policy：** 
-$\pi(a|s)=P(a|s)=P(l_{i+1}|x_{1:i}\cap l_d)$
+$$\pi(a|s)=P(a|s)=P(l_{i+1}|x_{1:i}\cap l_d)$$
 
 **生成过程可以描述为将以下生成轨迹的概率最大化：**
-$\hat{T}=\max\prod\limits_{i=1}^n\pi(a_i|s_i)=\max\limits_{P_\Theta}\prod\limits_{i=1}^nP_\Theta(l_{i+1}|x_{1:i}\cap l_d)$
+$$\hat{T}=\max\prod\limits_{i=1}^n\pi(a_i|s_i)=\max\limits_{P_\Theta}\prod\limits_{i=1}^nP_\Theta(l_{i+1}|x_{1:i}\cap l_d)$$
 
 ## The Proposed Framework
 
@@ -77,11 +77,11 @@ $f(l_j)=g(l_j)+h(l_j)$，$g(l_j)$评估当前部分轨迹的观察成本，$h(l_
 
 使用拓扑约束的线性层来预测观察到的成本：
 1. 给定当前部分轨迹$x_{1:i}$，将它的时空信息$(l_i,t_i)$嵌入到稠密向量中，
-即$x_i=Embed(l_i) ||Embed(encode(t_i))$
+即$$x_i=Embed(l_i) ||Embed(encode(t_i))$$
 2. 将当前的部分轨迹转换为一系列稠密向量$\{x_1, x_2,..., x_i\}$。接着，使用LSTM网络来建模顺序轨迹的运动状态$\{h_1, h_2,..., h_i\}$。进一步利用点积注意力机制来增强潜在的移动状态$\widetilde{h_i}$的形式为：
-    $\widetilde{h_i}=\sum\limits_{k=1}^i att(h_i, h_k)\cdot h_k$
+    $$\widetilde{h_i}=\sum\limits_{k=1}^i att(h_i, h_k)\cdot h_k$$
 其中函数$att(·,·)$通过点积方法评估当前移动状态$h_i$与历史移动状态$h_k$之间的相关权重
 3. 最后，在捕获增强的移动状态之后，构建一个拓扑约束的线性层来预测观察到的条件概率$P(l_j|x_{1:i})$。在拓扑约束的线性层中，引入拓扑邻接权重$adj_{l_i,l_j}$到线性层中，当候选道路$l_j$与当前道路$l_i$相邻时为1，否则为0。利用拓扑邻接权重，将非相邻候选道路$l_j$的条件概率$P(l_j|x_{1:i})$设为零，以确保生成轨迹的连续性
-    $P(l_j|x_{1:i})=\frac{exp(\omega_{l_j}\cdot \widetilde{h_i}\cdot adj_{l_i,l_j})}{\sum_{l_k}exp(\omega_{l_k}\cdot \widetilde{h_i}\cdot adj_{l_i,l_k})}$
+    $$P(l_j|x_{1:i})=\frac{exp(\omega_{l_j}\cdot \widetilde{h_i}\cdot adj_{l_i,l_j})}{\sum_{l_k}exp(\omega_{l_k}\cdot \widetilde{h_i}\cdot adj_{l_i,l_k})}$$
 
 观测成本$g(l_j)=-\log P(l_j|x_{1:i})$
