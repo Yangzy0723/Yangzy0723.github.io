@@ -47,9 +47,11 @@ categories: [论文阅读]
 事实上，这是一个马尔可夫决策过程（MDP），记现有状态$s$由$x_{1:i}$组成，给定目标道路段$l_d$，下一步道路段选择为$l_{i+1}$（行动记为$a$），那么运动策略实际上建模为 $\pi(a\ given\ s)$
 
 **Human Movement Policy：** 
+
 $$\pi(a\ given\ s)=P(a\ given\ s)=P(l_{i+1}\ given\ x_{1:i}\cap l_d)$$
 
 **生成过程可以描述为将以下生成轨迹的概率最大化：**
+
 $$\hat{T}=\max\prod\limits_{i=1}^n\pi(a_i\ given\ s_i)=\max\limits_{P_\Theta}\prod\limits_{i=1}^nP_\Theta(l_{i+1}\ given\ x_{1:i}\cap l_d)$$
 
 ## 四、The Proposed Framework
@@ -112,6 +114,6 @@ $$f(l_j)=-\log\pi(a\ given\ s)=-\log P(l_j\ given\ x_{1:i}\cap l_d)$$
 
 3. 预期成本$h(l_j)=-\log P(l_j\ given\ l_d)$
 
-**Remark:**与原始的A*算法相比，上述方法能在引入时间信息和顺序运动状态的情况下对不同的人类运动策略进行建模，此外结合结构道路表示，提高了预期成本$h(l_j)$的有效性
+**Remark:** 与原始的A*算法相比，上述方法能在引入时间信息和顺序运动状态的情况下对不同的人类运动策略进行建模，此外结合结构道路表示，提高了预期成本$h(l_j)$的有效性
 
 ### 4.3 Enhancing Generator with Discriminator
