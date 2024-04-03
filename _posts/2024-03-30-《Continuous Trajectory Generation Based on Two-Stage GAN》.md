@@ -32,7 +32,7 @@ categories: [论文阅读]
 - 不利用人类移动先验知识的无模型方法不能有效生成连续轨迹
 - 现有方法的随机生成过程存在误差累积问题，轨迹是根据生成器给定的概率随机生成的。然而，一旦生成器预测错误，该过程将在错误的前提下继续生成，这降低了生成轨迹的质量
 
-然后文章大致介绍了基于[A*假设](https://zh.wikipedia.org/wiki/A*%E6%90%9C%E5%B0%8B%E6%BC%94%E7%AE%97%E6%B3%95)，这里提出的方法是如何解决上述三个问题的。
+然后文章大致介绍了基于[A*假设](https://en.wikipedia.org/wiki/A*_search_algorithm)，这里提出的方法是如何解决上述三个问题的。
 
 首次通过将A*算法与神经网络相结合来解决城市道路网络上的连续轨迹生成问题。
 
@@ -47,20 +47,20 @@ categories: [论文阅读]
 事实上，这是一个马尔可夫决策过程（MDP），记现有状态$s$由$x_{1:i}$组成，给定目标道路段$l_d$，下一步道路段选择为$l_{i+1}$（行动记为$a$），那么运动策略实际上建模为 $\pi(a|s)$
 
 **Human Movement Policy：** 
-$\pi(a|s)=P(a|s)=P(l_{i+1}|x_{1:i}\cap l_d）$
+$\pi(a|s)=P(a|s)=P(l_{i+1}|x_{1:i}\cap l_d)$
 
 **生成过程可以描述为将以下生成轨迹的概率最大化：**
 $\hat{T}=\max\prod\limits_{i=1}^n\pi(a_i|s_i)=\max\limits_{P_\Theta}\prod\limits_{i=1}^nP_\Theta(l_{i+1}|x_{1:i}\cap l_d)$
 
 ## The Proposed Framework
 
-**生成器$G$：** 学习人类移动策略 $\pi(a | s)$
+**生成器$G$：** 学习人类移动策略 $\pi(a|s)$
 
 **判别器$D$：** 生成奖励$R$以引导生成器的优化过程
 
 ![生成器和判别器](G_and_D.png)
 
-根据前文定义Human Movement Policy，为考虑当前部分轨迹和旅行目的地的影响，采用`A*`来建模人类移动策略 $\pi(a | s)$
+根据前文定义Human Movement Policy，为考虑当前部分轨迹和旅行目的地的影响，采用`A*`来建模人类移动策略 $\pi(a|s)$
 
 $f(l_j)=g(l_j)+h(l_j)$，$g(l_j)$评估当前部分轨迹的观察成本，$h(l_j)$估计通过候选道路$l_j$到达目的地$l_d$的预期成本 $f(l_j)=-\log\pi(a|s)=-\log P(l_j|x_{1:i}\cap l_d)$
 
