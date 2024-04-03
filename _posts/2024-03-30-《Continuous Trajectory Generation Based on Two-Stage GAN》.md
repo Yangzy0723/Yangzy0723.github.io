@@ -42,10 +42,9 @@ categories: [论文阅读]
 
 **连续轨迹定义：** 指的是序列中的相邻元素$x_i,x_{i+1}$指示的道路段$l_i, l_{i+1}$在路网中是相邻的
 
-**Continuous Mobility Trajectory Generation：** 给定一个真实世界的移动轨迹数据集，通过一个$\Theta$参数化的生成模型$G$生成一个连续的移动轨迹
-$\hat{T} = \{\hat{x_1}, \hat{x_2},..., \hat{x_n}\}$
+**Continuous Mobility Trajectory Generation：** 给定一个真实世界的移动轨迹数据集，通过一个$\Theta$参数化的生成模型$G$生成一个连续的移动轨迹 $\hat{T} = \{\hat{x_1}, \hat{x_2},..., \hat{x_n}\}$
 
-事实上，这是一个马尔可夫决策过程（MDP），记现有状态$s$由$x_{1:i}$组成，给定目标道路段$l_d$，下一步道路段选择为$l_{i+1}$（行动记为$a$），那么运动策略实际上建模为$\pi(a|s)$
+事实上，这是一个马尔可夫决策过程（MDP），记现有状态$s$由$x_{1:i}$组成，给定目标道路段$l_d$，下一步道路段选择为$l_{i+1}$（行动记为$a$），那么运动策略实际上建模为 $\pi(a|s)$
 
 **Human Movement Policy：** 
 $\pi(a|s)=P(a|s)=P(l_{i+1}|x_{1:i}\cap l_d）$
@@ -55,13 +54,13 @@ $\hat{T}=\max\prod\limits_{i=1}^n\pi(a_i|s_i)=\max\limits_{P_\Theta}\prod\limits
 
 ## The Proposed Framework
 
-**生成器$G$：** 学习人类移动策略$\pi(a|s)$
+**生成器$G$：** 学习人类移动策略 $\pi(a|s)$
 
-**判别器$D$：** 生成奖励$R$以引导生成器的优化过程
+**判别器$D$：** 生成奖励 $R$ 以引导生成器的优化过程
 
 ![生成器和判别器](G_and_D.png)
 
-根据前文定义Human Movement Policy，为考虑当前部分轨迹和旅行目的地的影响，采用`A*`来建模人类移动策略$\pi(a|s)$
+根据前文定义Human Movement Policy，为考虑当前部分轨迹和旅行目的地的影响，采用`A*`来建模人类移动策略 $\pi(a|s)$
 
 $f(l_j)=g(l_j)+h(l_j)$，$g(l_j)$评估当前部分轨迹的观察成本，$h(l_j)$估计通过候选道路$l_j$到达目的地$l_d$的预期成本
 $f(l_j)=-\log\pi(a|s)=-\log P(l_j|x_{1:i}\cap l_d)$
