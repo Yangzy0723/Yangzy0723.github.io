@@ -6,7 +6,7 @@ categories: [论文阅读]
 
 # 《Fast Exact Shortest-Path Distance Queries on Large》
 
-**[原文](《Fast_Exact_Shortest-Path_Distance_Queries_on_Large》.pdf)**
+**[原文](Fast_Exact_Shortest-Path_Distance_Queries_on_Large.pdf)**
 
 ## 一、ABSTRACT
 
@@ -33,4 +33,34 @@ categories: [论文阅读]
 
 论文中的方法可以处理有向/加权图，但为了方便说明，在接下来的内容中，假设图是无向、无权的
 
-**Def 2-hop cover**:$\forall vertex\ u$
+**Def 2-hop cover**:$\forall vertex\ u$，令$C(u)$为候选点集（可称为**地标集**），使得$C(u)$和$C(v)$中至少有一个公共的顶点$w$，这个公共的顶点$w$位于$u,v$的最短路径上。换句话说，从$u$到$v$的最短路径至少会“经过”（即在某处“跳过”）它们的共同地标顶点。
+
+**使用两跳覆盖进行查询**:
+1. 对于图中每个顶点$u$以及一个顶点$w\in C(u)$，我们计算它们间的距离$d_G(u,w)$，因此得到集合$L(u)=\{(w,d_G(u,w)\}_{w\in C(u)}$
+2. 当需要查询两个顶点$s$和$t$之间的最短路径长度时，我们找到$s$和$t$的地标集的公共顶点$w$，使用以下公式计算距离;
+
+$$d_G(s,t)=min\{\delta_{vs}+\delta_{wt}|(v,\delta_{vs})\in L(s),(w,\delta_{wt})\in L(t)\} $$
+
+论文中基于以上方法，提出了*pruned landmark labeling*
+
+在执行广度优先搜索（BFS）时，如果在搜索队列中已经存在一个顶点$w$，它通过当前源点$v$可以到达，并且$v$到$w$的距离加上$w$到当前考虑的顶点$u$的距离等于$v$到$u$的距离，则顶点$u$可以被修剪，即不需要再从$u$出发继续BFS
+
+具体来说，如果在BFS过程中遇到顶点$u$，并且存在一个已经被访问的顶点$w$，满足$d_G(v,u)=d_G(v,w)+d_G(w,u)$，那么可以确定通过$w$的路径已经是$v$到$u$的最短路径，因此可以修剪$u$，跳过对$u$的进一步搜索
+
+然后使用位运算同时执行多个BFS过程，进一步提高了算法的处理速度
+
+## 三、RELATED WORK
+
+### 3.1 Exact Methods
+
+有效地找到小的2跳覆盖是一个具有挑战性且长期存在的问题
+
+提到了一些方法，如层次化中心地标标记（hierarchical hub labeling），高速公路中心标记（highway-centric labeling）以及基于树分解的方法
+
+### 3.2  Approximate Methods
+
+主要方法是基于地标的方法。这些方法的基本思想是选择一个顶点子集$L$作为地标，并预先计算每个地标$l\in L$和所有顶点$u\in V$之间的距离$d_G(l,u)$。当查询两个顶点$u$和$v$之间的距离时，我们会回答在地标$l\in L$上的最小值$d_G(u,l)+d_G(l,v)$作为一个估计。通常，每个查询的精度取决于实际最短路径是否经过地标附近。因此，通过选择中心顶点作为地标，估计的准确性比随机选择地标要好得多。然而，对于距离较近的顶点对，精度仍然远远低于平均水平，因为它们之间的最短路径长度较小，并且不太可能经过附近的地标
+
+提到了新技术改进了上述方法，但是查询时间增加
+
+## 四、PRELIMINARIES
