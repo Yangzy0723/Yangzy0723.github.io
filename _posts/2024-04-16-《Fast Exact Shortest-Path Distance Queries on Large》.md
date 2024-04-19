@@ -64,3 +64,27 @@ $$d_G(s,t)=min\{\delta_{vs}+\delta_{wt}|(v,\delta_{vs})\in L(s),(w,\delta_{wt})\
 提到了新技术改进了上述方法，但是查询时间增加
 
 ## 四、PRELIMINARIES
+
+**图**：$G(V,E)$
+
+**节点数**：$n$
+
+**边数**：$m$
+
+**$v$在图中的邻点**：$N_G(v)$
+
+**$u,v$间距离**：$d_G(u,v)$
+
+**$u,v$最段路上所有节点集合**：$P_G(u,v)$
+
+**2-hop cover**：$\forall vertex\ u$，计算标签集$L(u)=\{(w,d_G(w,u)\}_{w\in C(u)}$，作为索引，距离查询$s,t$：
+
+$$QUERY(s,t,L)=min\{\delta_{vs}+\delta_{vt}|(v,\delta_{vs})\in L(s),(v,\delta_{vt}\in L(t)\}$$
+
+如果$L(s)$和$L(t)$没有公共节点，那么$QUERY(s,t,L)=\infty$
+
+## 五、ALGORITHM DESCRIPTION
+
+
+
+
