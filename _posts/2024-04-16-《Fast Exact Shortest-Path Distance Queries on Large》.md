@@ -1,12 +1,12 @@
 ---
 layout: mypost
-title: 《Fast Exact Shortest-Path Distance Queries on Large》
+title: 《Fast Exact Shortest-Path Distance Queries...》
 categories: [论文阅读]
 ---
 
-# 《Fast Exact Shortest-Path Distance Queries on Large》
+# Fast Exact Shortest-Path Distance Queries on Large Networks by Pruned Landmark Labeling
 
-**[原文](Fast_Exact_Shortest-Path_Distance_Queries_on_Large.pdf)**
+**[原文](Fast_Exact_Shortest-Path_Distance_Queries.pdf)**
 
 ## 一、ABSTRACT
 
@@ -39,7 +39,7 @@ categories: [论文阅读]
 1. 对于图中每个顶点$u$以及一个顶点$w\in C(u)$，我们计算它们间的距离$d_G(u,w)$，因此得到集合$L(u)=\{(w,d_G(u,w)\}_{w\in C(u)}$
 2. 当需要查询两个顶点$s$和$t$之间的最短路径长度时，我们找到$s$和$t$的地标集的公共顶点$w$，使用以下公式计算距离;
 
-$$d_G(s,t)=min\{\delta_{vs}+\delta_{wt}|(v,\delta_{vs})\in L(s),(w,\delta_{wt})\in L(t)\} $$
+$$d_G(s,t)=min\{\delta_{ws}+\delta_{wt}|(w,\delta_{ws})\in L(s),(w,\delta_{wt})\in L(t)\} $$
 
 论文中基于以上方法，提出了*pruned landmark labeling*
 
