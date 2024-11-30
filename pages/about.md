@@ -11,13 +11,13 @@ title: 关于我
 
 南京大学匡亚明学院2021级本科生，主修专业为计算机科学与技术
 
-热爱猫猫狗狗，喜欢打篮球，最喜欢的球星是[Kawhi Leonard](https://zh.wikipedia.org/wiki/%E7%A7%91%E6%80%80%C2%B7%E4%BC%A6%E7%BA%B3%E5%BE%B7)
+热爱猫猫[狗狗](https://zh.wikipedia.org/zh-cn/%E9%87%91%E6%AF%9B%E5%AF%BB%E5%9B%9E%E7%8A%AC)，喜欢打篮球
 
 ## 相关技能
 
-熟悉 Linux，目前在学校主要使用Java语言进行软件开发
+熟悉Linux，目前在学校主要使用C、Java语言进行软件开发
 
-能够编写 solidity 智能合约，并架设和部署国产区块链系统 FISCO BCOS
+目前正致力于AIOS、System for AI、LLM推理加速方面的研究
 
 如有远程实习的机会欢迎联系我 😄
 
