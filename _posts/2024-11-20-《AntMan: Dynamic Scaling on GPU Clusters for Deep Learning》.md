@@ -112,7 +112,7 @@ GPU内存的动态扩展：GPU内存是DL作业中最稀缺的资源，其分配
 
 而Local Coordinator主要负责根据深度学习的训练任务的执行情况（任务情况，硬件指标，mini batch的执行时间，显存和内存的使用情况等），管理训练任务的全生命周期
 
-![scheduler](scheduler.jpg)
+![scheduler](scheduler.png)
 
 Antman根据SLA把任务分为resource-guarantee和opportunistic两种任务，其中前者需要保证与独占GPU卡类似的训练速度。Antman的设计目标是在保证resource-guarantee类型任务的SLA的同时，提高集群的利用率opportunistic类型的任务主要就是用来提高集群利用率的。
 
